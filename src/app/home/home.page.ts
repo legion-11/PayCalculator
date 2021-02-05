@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { IonRouterOutlet, Platform } from '@ionic/angular';
+import { Plugins } from '@capacitor/core';
+const { App } = Plugins;
 
 @Component({
   selector: 'app-home',
@@ -13,8 +16,19 @@ export class HomePage {
   overtimePay = 0.0
   totalPay = 0.0
   tax = 0.0
-  constructor() {}
 
+  constructor(
+    private platform: Platform,
+    private routerOutlet: IonRouterOutlet
+  ) {
+    this.platform.backButton.subscribeWithPriority(-1, () => {
+      if (!this.routerOutlet.canGoBack()) {
+        App.exitApp();
+      }
+    });
+  }
+
+  // calculates payments and reveals card
   calculate = () => {
     let hours = Number(this.hoursWorked)
     let rate = Number(this.hourlyRate)
