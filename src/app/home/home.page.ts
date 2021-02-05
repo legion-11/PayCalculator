@@ -16,16 +16,16 @@ export class HomePage {
   constructor() {}
 
   calculate = () => {
-
-
     let hours = Number(this.hoursWorked)
     let rate = Number(this.hourlyRate)
 
     if (hours === 0 || rate === 0) {return}
-    this.regularPay = hours * rate
+
     if (hours  <= 40){
+      this.regularPay = hours * rate
       this.overtimePay = 0
     } else {
+      this.regularPay = 40 * rate
       this.overtimePay = (hours-40) * rate * 1.5
     }
     this.totalPay = this.overtimePay + this.regularPay
