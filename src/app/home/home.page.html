@@ -3,7 +3,7 @@
     <ion-title>
       Payment
     </ion-title>
-    <ion-buttons slot="start">
+    <ion-buttons slot="end">
       <ion-menu-button menu="first"></ion-menu-button>
     </ion-buttons>
   </ion-toolbar>
@@ -12,12 +12,77 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Payment</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+
+  <div id="box">
+    <div id="bottom-card">
+      <div>
+
+        <ion-card [hidden]=ishidden>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-label>Regular Payment</ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-label class="ion-float-right">{{regularPay.toString() + '$'}}</ion-label>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-label>Overtime Payment</ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-label class="ion-float-right">{{overtimePay.toString() + '$'}}</ion-label>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-label>Total Payment</ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-label class="ion-float-right">{{totalPay.toString() + '$'}}</ion-label>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-label>Tax</ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-label class="ion-float-right">{{tax.toString() + '$'}}</ion-label>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Calculate <ion-icon name="card-outline"></ion-icon> </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+
+            <ion-item>
+              <ion-label id="input-hours-worked" position="stacked">Hours Worked</ion-label>
+              <ion-input [(ngModel)]="hoursWorked" type="number"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">Hourly Rate</ion-label>
+              <ion-input id="input-hourly-rate" [(ngModel)]="hourlyRate" type="number"></ion-input>
+            </ion-item>
+
+            <ion-button class="ion-float-right ion-margin" (click) ="calculate()">Submit</ion-button>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
   </div>
+
 </ion-content>
+

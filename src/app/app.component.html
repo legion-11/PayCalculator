@@ -1,5 +1,5 @@
 <ion-app>
-  <ion-menu side="start" menuId="first" contentId="main">
+  <ion-menu side="end" menuId="first" contentId="main">
     <ion-header>
       <ion-toolbar color="primary">
         <ion-title>Start Menu</ion-title>
@@ -7,8 +7,18 @@
     </ion-header>
     <ion-content>
       <ion-list>
-        <ion-item>Main</ion-item>
-        <ion-item>About Me</ion-item>
+        <ion-menu-toggle>
+          <ion-item routerLink="/home">
+            <ion-icon slot="start" name="card-outline"></ion-icon>
+            <ion-label>Main</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item routerLink="/about-me">
+            <ion-icon slot="start" name="person-outline"></ion-icon>
+            <ion-label>About Me</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
       </ion-list>
     </ion-content>
   </ion-menu>
